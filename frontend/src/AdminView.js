@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+// Utilise la variable d'environnement fournie par Render, ou localhost pour le développement local
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:4000";
 export default function AdminView({ user }) { // Accepter la prop 'user'
   const [stockData, setStockData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
