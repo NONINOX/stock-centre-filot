@@ -21,7 +21,7 @@ export default function AdminView({ user }) { // Accepter la prop 'user'
   }, []);
 
   const fetchStock = () => {
-    fetch("http://localhost:4000/api/stock")
+     fetch(`${API_BASE_URL}/api/stock`)
       .then((res) => res.json())
       .then((data) => setStockData(data))
       .catch((err) =>
@@ -31,7 +31,7 @@ export default function AdminView({ user }) { // Accepter la prop 'user'
 
   // Supprimer un article
   const handleDelete = (index) => {
-    fetch(`http://localhost:4000/api/stock/${index}`, { method: "DELETE" })
+    fetch(`${API_BASE_URL}/api/stock/${index}`, { method: "DELETE" })
       .then((res) => {
         if (res.ok) {
           // Mise à jour locale
@@ -110,7 +110,7 @@ export default function AdminView({ user }) { // Accepter la prop 'user'
 
     if (editIndex !== null) {
       // Modification
-      fetch(`http://localhost:4000/api/stock/${editIndex}`, {
+       fetch(`${API_BASE_URL}/api/stock/${editIndex}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newItem),
@@ -128,7 +128,7 @@ export default function AdminView({ user }) { // Accepter la prop 'user'
         .catch(() => alert("Erreur lors de la modification"));
     } else {
       // Ajout
-      fetch("http://localhost:4000/api/stock", {
+      fetch(`${API_BASE_URL}/api/stock`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newItem),

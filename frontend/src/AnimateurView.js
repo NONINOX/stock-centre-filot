@@ -5,7 +5,7 @@ export default function AnimateurView() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/stock")
+     fetch(`${API_BASE_URL}/api/stock`)
       .then((res) => res.json())
       .then((data) => setStockData(data))
       .catch((err) =>
