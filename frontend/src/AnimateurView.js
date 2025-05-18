@@ -67,36 +67,38 @@ export default function AnimateurView() {
       ) : stockData.length === 0 ? (
         <p>Chargement des articles...</p>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Article</th>
-              <th>Boîte</th>
-              <th>Quantité</th>
-              <th>Description</th>
-              <th>Demande</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.map((row, index) => {
-              // Pour AnimateurView, l'index du map est suffisant si on n'a pas de suppression/édition qui modifie l'ordre.
-              // Sinon, il faudrait aussi utiliser stockData.indexOf(row) si des opérations modifient stockData.
-              // Ici, on prend les données directement de 'row'.
-              const articleName = row[0];
-              const currentQuantity = row[2];
-              return (
-                <tr key={index}>
-                  {row.map((cell, i) => (
-                    <td key={i}>{cell}</td>
-                  ))}
-                  <td>
-                    <button onClick={() => handleRequestMaterial(articleName, currentQuantity)} className="request-btn">Demander</button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div style={{ overflowX: 'auto', width: '100%' }}> {/* Ajout de ce div conteneur */}
+          <table style={{ minWidth: '500px' /* Optionnel: pour forcer une largeur minimale */ }}>
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>Boîte</th>
+                <th>Quantité</th>
+                <th>Description</th>
+                <th>Demande</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData.map((row, index) => {
+                // Pour AnimateurView, l'index du map est suffisant si on n'a pas de suppression/édition qui modifie l'ordre.
+                // Sinon, il faudrait aussi utiliser stockData.indexOf(row) si des opérations modifient stockData.
+                // Ici, on prend les données directement de 'row'.
+                const articleName = row[0];
+                const currentQuantity = row[2];
+                return (
+                  <tr key={index}>
+                    {row.map((cell, i) => (
+                      <td key={i}>{cell}</td>
+                    ))}
+                    <td>
+                      <button onClick={() => handleRequestMaterial(articleName, currentQuantity)} className="request-btn">Demander</button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

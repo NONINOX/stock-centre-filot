@@ -181,45 +181,47 @@ export default function AdminView({ user }) { // Accepter la prop 'user'
       ) : stockData.length === 0 ? (
         <p>Chargement des articles...</p>
       ) : (
-        <table border={1} cellPadding={5} style={{ borderCollapse: "collapse" }}>
-          <thead>
-            <tr>
-              <th>Article</th>
-              <th>Boîte</th>
-              <th>Quantité</th>
-              <th>Description</th>
-              <th>Actions</th>
-              <th>Demande</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.map((row, index) => {
-              // Note: index ici est relatif à filteredData,
-              // donc on récupère l'index réel dans stockData
-              const realIndex = stockData.indexOf(row);
-              const articleName = row[0];
-              const currentQuantity = row[2];
-              return (
-                <tr key={realIndex}>
-                  {row.map((cell, i) => (
-                    <td key={i}>{cell}</td>
-                  ))}
-                  <td>
-                    <button onClick={() => handleEdit(realIndex)} className="edit-btn">Edit</button>{" "}
-                    <button onClick={() => handleDelete(realIndex)} className="delete-btn">
-                      Supprimer
-                    </button>
-                  </td>
-                  <td>
-                    <button onClick={() => handleRequestMaterial(articleName, currentQuantity)} className="request-btn">
-                      Demander
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div style={{ overflowX: 'auto', width: '100%' }}> {/* Ajout de ce div conteneur */}
+          <table border={1} cellPadding={5} style={{ borderCollapse: "collapse", minWidth: '600px' /* Optionnel: pour forcer une largeur minimale */ }}>
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>Boîte</th>
+                <th>Quantité</th>
+                <th>Description</th>
+                <th>Actions</th>
+                <th>Demande</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData.map((row, index) => {
+                // Note: index ici est relatif à filteredData,
+                // donc on récupère l'index réel dans stockData
+                const realIndex = stockData.indexOf(row);
+                const articleName = row[0];
+                const currentQuantity = row[2];
+                return (
+                  <tr key={realIndex}>
+                    {row.map((cell, i) => (
+                      <td key={i}>{cell}</td>
+                    ))}
+                    <td>
+                      <button onClick={() => handleEdit(realIndex)} className="edit-btn">Edit</button>{" "}
+                      <button onClick={() => handleDelete(realIndex)} className="delete-btn">
+                        Supprimer
+                      </button>
+                    </td>
+                    <td>
+                      <button onClick={() => handleRequestMaterial(articleName, currentQuantity)} className="request-btn">
+                        Demander
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
 
       <hr style={{ margin: "20px 0" }} />

@@ -7,14 +7,16 @@ export default function Login({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const lowerCaseUsername = username.toLowerCase(); // Convertir le nom d'utilisateur en minuscules
+
     // Validation simple des identifiants
     if (
-      (username === "admin" && password === "5020") || // Admin existant
-      (username === "nono" && password === "8273") ||   // Nouvel admin : nono
-      (username === "tibou" && password === "1300") ||  // Nouvel admin : tibou
-      (username === "animateur" && password === "113")
+      (lowerCaseUsername === "admin" && password === "5020") ||
+      (lowerCaseUsername === "nono" && password === "8273") ||
+      (lowerCaseUsername === "tibou" && password === "1300") ||
+      (lowerCaseUsername === "animateur" && password === "113")
     ) {
-      onLogin(username);
+      onLogin(lowerCaseUsername); // Passer le nom d'utilisateur en minuscules à App.js
     } else {
       setError("Identifiants incorrects");
     }
