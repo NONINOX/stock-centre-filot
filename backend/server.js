@@ -6,7 +6,9 @@ const path = require("path");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://stock-centre-filot-app.onrender.com' // REMPLACE par l'URL réelle de ton frontend sur Render
+}));
 app.use(express.json());
 
 // Chemin vers le fichier Excel
