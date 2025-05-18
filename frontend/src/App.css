@@ -1,0 +1,305 @@
+/* c:\Users\nono-\mon-centre-vacances\frontend\src\App.css */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #e9f5e9; /* Vert très pâle pour le fond */
+  color: #333;
+  margin: 0;
+  font-size: 25px; /* Taille de police de base. Ajuste cette valeur (ex: 16px, 18px, 1.1em) */
+  line-height: 1.6;
+}
+
+/* Conteneur principal de l'application pour un padding global */
+/* Ceci cible le div racine dans Layout.js ou le premier div dans App.js si Layout n'est pas utilisé partout */
+#root > div > div[style*="margin-top: 20px"], /* Cible le conteneur des enfants dans Layout.js */
+.login-container ~ div /* Cible le conteneur principal si Login est affiché */
+{
+  padding: 20px;
+}
+
+
+h2, h3 {
+  color: #2e7d32; /* Vert foncé pour les titres */
+  margin-top: 0; /* Enlève la marge par défaut du premier titre dans un conteneur */
+  text-align: center; /* Centrer les titres */
+  margin-bottom: 20px;
+}
+
+/* Conteneurs pour les vues et formulaires pour un look "carte" */
+.view-container,
+.form-container {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  position: relative; /* Nécessaire pour le positionnement absolu du logo */
+}
+
+/* Styles pour le logo qui était dans .view-container (maintenant déplacé dans la nav) */
+/* Si vous n'utilisez plus ce logo dans .view-container, ces styles peuvent être supprimés. */
+/* .logo-header-container { 
+   position: absolute; 
+   top: 15px; 
+   right: 15px; 
+   z-index: 10; 
+ } 
+
+ .logo-header-container img { 
+   max-width: 80px; 
+   height: auto; 
+   display: block; 
+ } */
+
+/* Champs de saisie */
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  /* width: 100%; Retire cette ligne si tu préfères les largeurs inline spécifiques */
+  /* max-width: 350px; */ /* Ou ajuste cette valeur */
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+  border-color: #4CAF50; /* Vert pour l'indicateur de focus */
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+  outline: none;
+}
+
+/* Étiquettes */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444; /* Un gris un peu plus foncé pour les labels */
+}
+
+/* Boutons */
+button,
+input[type="submit"] {
+  background-color: #4CAF50; /* Vert principal */
+  color: white;
+  padding: 10px 18px; /* Ajustement du padding */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem; /* Légère réduction de la taille de la police */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  margin-right: 8px; /* Espace entre les boutons */
+  margin-top: 5px; /* Marge en haut pour les boutons qui suivent des inputs */
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #388E3C; /* Vert plus foncé au survol */
+  transform: translateY(-1px); /* Petit effet de soulèvement */
+}
+
+button:active,
+input[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Bouton secondaire (ex: Annuler) */
+button.secondary, /* Ajoute la classe .secondary aux boutons Annuler */
+button[type="button"]:not(nav button):not(table button) { /* Cible les boutons Annuler s'ils n'ont pas de classe */
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+button.secondary:hover,
+button[type="button"]:not(nav button):not(table button):hover {
+  background-color: #e0e0e0;
+  border-color: #bbb;
+}
+
+/* Tableaux */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden; /* Important pour que border-radius s'applique aux coins du tableau */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e8e8e8; /* Bordure plus douce */
+}
+
+th {
+  background-color: #dcf0dd; /* Vert clair pour les en-têtes de tableau */
+  color: #2e7d32; /* Texte vert foncé pour les en-têtes */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem; /* Taille de police légèrement réduite pour les en-têtes */
+  letter-spacing: 0.5px;
+}
+
+tbody tr:hover {
+  background-color: #f7fcf7; /* Vert très très léger au survol des lignes */
+}
+
+tbody tr:last-child td {
+  border-bottom: none; /* Pas de bordure pour la dernière ligne */
+}
+
+/* Boutons d'action dans les tableaux */
+table button {
+  padding: 5px 10px; /* Plus petits boutons pour les tableaux */
+  font-size: 0.8rem;
+  margin-right: 5px;
+  text-transform: none; /* Pas de majuscules pour ces boutons */
+}
+
+table button.edit-btn { /* Ajoute la classe .edit-btn au bouton Edit */
+   background-color: #64b5f6; /* Bleu clair */
+   border-color: #64b5f6;
+   color: white;
+}
+table button.edit-btn:hover {
+   background-color: #42a5f5; /* Bleu plus foncé */
+}
+
+table button.delete-btn { /* Ajoute la classe .delete-btn au bouton Supprimer */
+  background-color: #e57373; /* Rouge clair */
+  border-color: #e57373;
+  color: white;
+}
+table button.delete-btn:hover {
+  background-color: #ef5350; /* Rouge plus foncé */
+}
+
+/* Barre de navigation dans Layout.js */
+nav {
+  background-color: #38761d; /* Vert foncé pour la nav */
+  padding: 12px 25px !important; /* Override le style inline */
+  border-bottom: none !important; /* Override le style inline */
+  display: flex;
+  align-items: center; /* Aligne verticalement le logo et le bouton */
+  justify-content: space-between; /* Pousse le logo à gauche et le bouton à droite */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+/* Conteneur pour le logo dans la barre de navigation */
+/*.nav-logo {
+  /* Pas besoin de styles spécifiques si l'image est la seule chose dedans */
+  /* et que la nav gère l'alignement */
+/*}*/
+
+.nav-logo img {
+  max-height: 200px; /* Taille plus appropriée pour un logo dans la nav */
+  width: auto; /* Garde les proportions */
+  display: block; /* Pour un meilleur contrôle de la mise en page */
+}
+
+nav button {
+  background-color: #ffffff;
+  color: #38761d; /* Texte vert pour correspondre à la nav */
+  border: 1px solid #38761d;
+  padding: 15px 25px;
+  text-transform: none;
+}
+
+nav button:hover {
+  background-color: #e9f5e9; /* Fond vert pâle au survol */
+  color: #2e7d32;
+}
+
+/* Champ de recherche */
+input[placeholder^="Rechercher"] {
+  display: block; /* Nécessaire pour centrer avec margin auto */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px !important; /* Espace sous la barre de recherche */
+  max-width: 600px; /* Ajuste cette valeur selon tes préférences */
+}
+
+/* Page de connexion */
+.login-container {
+  max-width: 420px; /* Légèrement plus large */
+  margin: 60px auto; /* Plus de marge en haut */
+  padding: 30px 35px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centre le texte et les éléments inline-block comme le logo */
+}
+
+.login-container h2 {
+  /* text-align: center; est déjà défini globalement pour h2 */
+  margin-bottom: 25px;
+  
+}
+/* Styles pour le logo sur la page de connexion */
+.login-logo img {
+  max-width: 300px; /* Ajuste la taille du logo comme souhaité */
+  height: auto;
+  margin-bottom: 20px; /* Espace sous le logo */
+  display: inline-block; /* Nécessaire pour que text-align: center du parent fonctionne */
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre les enfants directs du formulaire (les divs de champ) */
+  width: 100%; /* Le formulaire prend la largeur de .login-container */
+}
+
+.login-container form > div { /* Cible les div directs du formulaire (pour username, password) */
+  margin-bottom: 18px;
+  width: 100%; /* Les div prennent toute la largeur disponible dans le form */
+  max-width: 320px; /* Optionnel: limite la largeur des conteneurs de champ */
+  text-align: left; /* Labels alignés à gauche au-dessus des champs, plus standard */
+}
+
+.login-container form label {
+  display: block; /* Déjà dans les styles globaux */
+  margin-bottom: 6px; /* Espace entre label et input */
+  /* text-align: center; est hérité du div parent */
+}
+
+.login-container form input[type="text"],
+.login-container form input[type="password"] {
+  display: block; /* Pour permettre le centrage avec margin: auto */
+  width: 100%; /* Prend toute la largeur de son parent (le div form > div) */
+  /* Si le parent div a max-width: 320px, l'input aussi. */
+  /* Si vous voulez une largeur spécifique pour l'input, indépendante du div parent: */
+  /* width: 280px; */
+  /* max-width: 100%; */ /* Pour s'assurer qu'il ne dépasse pas son conteneur */
+  margin-left: auto;
+  margin-right: auto;
+  /* Les autres styles (padding, border, etc.) sont hérités des styles globaux d'input */
+}
+
+
+.login-container button[type="submit"] {
+  width: 100%;
+  max-width: 320px; /* Pour correspondre à la largeur max des champs si définie */
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.login-container p[style*="color: red"] { /* Message d'erreur */
+  background-color: #ffebee; /* Correction de la typo Flee -> ee */
+  color: #c62828 !important; /* Important pour surcharger le style inline */
+  border: 1px solid #ef9a9a;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 20px;
+  text-align: center;
+}
