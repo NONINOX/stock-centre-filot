@@ -159,7 +159,7 @@ export default function AdminView({ user }) { // Accepter la prop 'user'
       <h3>Bonjour {user} !</h3> {/* Afficher le message de bienvenue */}
       <h2>Bienvenue sur la page d'administration</h2>
       
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', marginRight: '590px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
         <input
           type="text"
           placeholder="Rechercher un article, boîte ou description"

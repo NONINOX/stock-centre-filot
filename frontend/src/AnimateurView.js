@@ -46,7 +46,7 @@ export default function AnimateurView() {
       <h3>Bonjour animateur !</h3>
       <h2>Bienvenue sur la page de l'animateur</h2>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px',  marginRight: '590px'  }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px'  }}>
         <input
           type="text"
           placeholder="Rechercher un article, boîte ou description"
